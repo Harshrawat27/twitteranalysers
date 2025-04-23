@@ -21,17 +21,39 @@ export default function Home() {
   const [error, setError] = useState('');
 
   // Extract username from Twitter URL
+  // Extract username from Twitter URL
   const extractUsername = (url: string) => {
     try {
+      // If it's already a username with @ prefix
+      if (url.startsWith('@')) {
+        return url.substring(1);
+      }
+
+      // If it's just a username without @ or URL
+      if (!url.includes('/') && !url.includes('.')) {
+        return url;
+      }
+
+      // Try to parse as URL
       const urlObj = new URL(url);
       const pathSegments = urlObj.pathname
         .split('/')
         .filter((segment) => segment);
       return pathSegments[0];
     } catch (error) {
-      // If URL parsing fails, check if the input might be just a username
-      if (url.startsWith('@')) return url.substring(1);
-      if (!url.includes('/') && !url.includes('.')) return url;
+      // If URL parsing fails, check common URL patterns
+      const twitterUrlMatch =
+        url.match(/twitter\.com\/([^\/\?]+)/i) ||
+        url.match(/x\.com\/([^\/\?]+)/i);
+      if (twitterUrlMatch && twitterUrlMatch[1]) {
+        return twitterUrlMatch[1];
+      }
+
+      // Last resort, just return the input if it doesn't have special characters
+      if (!/[\s\/\?&=]/.test(url)) {
+        return url;
+      }
+
       return '';
     }
   };

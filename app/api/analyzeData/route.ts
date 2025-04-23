@@ -164,31 +164,31 @@ async function analyzeContentAndTopics(tweets: Tweet[], apiKey: string) {
   // For this demo, we'll use mock data
 
   // In production, you'd send tweet text to OpenAI API for analysis
-  /*
+
   const response = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${apiKey}`
+      Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
-      model: "gpt-4",
+      model: 'gpt-4',
       messages: [
         {
-          role: "system",
-          content: "Analyze the following tweets and categorize them by content type and topic."
+          role: 'system',
+          content:
+            'Analyze the following tweets and categorize them by content type and topic.',
         },
         {
-          role: "user",
-          content: JSON.stringify(tweets.slice(0, 100).map(t => t.text))
-        }
-      ]
-    })
+          role: 'user',
+          content: JSON.stringify(tweets.slice(0, 100).map((t) => t.text)),
+        },
+      ],
+    }),
   });
-  
+
   const data = await response.json();
   // Process the response...
-  */
 
   // Mock content performance data
   const contentPerformance = [
@@ -322,31 +322,31 @@ async function analyzeEmotionsAndHooks(tweets: Tweet[], apiKey: string) {
   // For this demo, we'll use mock data
 
   // In production, you'd send tweet text to OpenAI API for analysis
-  /*
+
   const response = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${apiKey}`
+      Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
-      model: "gpt-4",
+      model: 'gpt-4',
       messages: [
         {
-          role: "system",
-          content: "Analyze the following tweets and identify the emotions and psychological hooks used."
+          role: 'system',
+          content:
+            'Analyze the following tweets and identify the emotions and psychological hooks used.',
         },
         {
-          role: "user",
-          content: JSON.stringify(tweets.slice(0, 100).map(t => t.text))
-        }
-      ]
-    })
+          role: 'user',
+          content: JSON.stringify(tweets.slice(0, 100).map((t) => t.text)),
+        },
+      ],
+    }),
   });
-  
+
   const data = await response.json();
   // Process the response...
-  */
 
   // Mock emotion analysis data
   const emotionAnalysis = [
