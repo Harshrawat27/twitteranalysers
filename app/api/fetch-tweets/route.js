@@ -14,7 +14,6 @@ export async function POST(request) {
         { status: 400 }
       );
     }
-    // not working
     // Prepare the API request to Apify
     const apiEndpoint =
       'https://api.apify.com/v2/acts/kaitoeasyapi~twitter-x-data-tweet-scraper-pay-per-result-cheapest/run-sync-get-dataset-items';
@@ -37,10 +36,10 @@ export async function POST(request) {
       },
       body: JSON.stringify({
         searchTerms: [profileUrl],
-        tweetsDesired: 100, // Fetch 100 tweets
+        tweetsDesired: 10, // Fetch 100 tweets
         mode: 'profile',
-        maxTweets: 100, // Maximum number of tweets to fetch
-        includeReplies: false, // Include replies
+        maxTweets: 10, // Maximum number of tweets to fetch
+        includeReplies: true, // Include replies
         includeRetweets: false, // Include retweets
         language: 'en', // Filter by English tweets
         sort: 'oldest', // Get oldest tweets first
